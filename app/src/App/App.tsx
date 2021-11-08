@@ -1,21 +1,42 @@
 import React from 'react';
 import './App.css';
-import Button from './components/Button/Button';
+import MemeViewer from './components/MemeViewer/MemeViewer';
 
-function App() {
-  
-  let counter =0;
+class App extends React.Component {
+  state:any;
+  constructor(props){
+    super(props);
+    this.state={
+      currentMeme:{
+        titre:'titre',
+        text:'texte',
+        x:50,
+        y:50,
+        color:'#00f',
+        underline:true,
+        italic:true,
+        fontWeight:'900',
+        fontSize:24,
+        fx:100,
+        fy:100,
+        imageId:0
+      },
+      images:[
+        {id:0, title:'pikachu', url:'img/pikachu.jpg', w:801, h:410},
+      ]
+    };
+  }
+  componentDidUpdate() {
 
-  return (
-    <div className="App">
-      <h1>Compteur: {counter}</h1>
+  }
 
-
-      <Button onButtonClick={(arg) : void => { counter++; }}>Ajout +1</Button>
-      <Button bgColor='#ff0' onButtonClick={() => {}}>Clickez</Button>
-      <Button onButtonClick={() => {}} color='#444' style={{textDecoration:'underline', fontWeight:'bold'}}>-1</Button>
-    </div>
-  );
+  render() {
+    return (
+      <div className="App">
+        <MemeViewer meme={this.state.currentMeme} img={this.state.images.find((i) => this.state.currentMeme.imageId === i.id)}></MemeViewer>
+      </div>
+    );
+   }
 }
 
 export default App;
