@@ -4,5 +4,10 @@
     color:#fff;
     background-color: #dd00aa;
     font-size: large;
-
+}
+.Button:hover {
+    box-shadow: 15px 15px 15px #aaa;
+}
+.clicked {
+    box-shadow: 5px 5px 15px #faa !important;
 }
