@@ -9,7 +9,7 @@ class App extends React.Component {
     this.state={
       currentMeme:{
         titre:'titre',
-        text:'texte',
+        text:'SURPRISED PIKACHU FACE',
         x:50,
         y:50,
         color:'#00f',
