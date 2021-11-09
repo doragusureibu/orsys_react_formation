@@ -24,7 +24,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "hook": "npx generate-react-cli c --type=hookFunc",
-    "component": "npx generate-react-cli c"
+    "component": "npx generate-react-cli c",
+    "json":"json-server -p 5679 db/db.json"
   },
   "eslintConfig": {
     "extends": [
