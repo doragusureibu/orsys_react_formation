@@ -21,7 +21,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "hook": "npx generate-react-cli c --type=hookFunc",
+    "component": "npx generate-react-cli c"
   },
   "eslintConfig": {
     "extends": [
