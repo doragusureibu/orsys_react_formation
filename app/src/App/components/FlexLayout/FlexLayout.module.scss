@@ -1,0 +1,12 @@
+.FlexLayout {
+    display: flex;
+    height: 80vh;
+
+}
+.FlexLayout>*:nth-child(1) {
+    flex-grow: 1;
+}
+
+.FlexLayout>*:nth-child(1)>* {
+    text-align: center;
+}

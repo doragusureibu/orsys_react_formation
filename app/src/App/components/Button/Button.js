@@ -17,10 +17,12 @@ const Button=(props) => {
         console.log(evt);
       }} className={`${style.Button}${isClicked.clicked?' '+style.clicked:''}`}
       style={{backgroundColor:props.bgColor, color:props.color, ...props.style}}
+      type={props.type}
       >{props.children}</div>);
 }
 
 Button.propTypes={
+    type: PropTypes.string,
     children: PropTypes.any.isRequired,
     onButtonClick: PropTypes.func.isRequired,
     bgColor: PropTypes.string.isRequired,

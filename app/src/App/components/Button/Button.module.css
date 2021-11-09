@@ -1,9 +1,8 @@
 .Button {
-    padding:10px 5px;
+    padding:5px 0px;
     margin:5px 15px;
     color:#fff;
     background-color: #dd00aa;
-    font-size: large;
 }
 .Button:hover {
     box-shadow: 15px 15px 15px #aaa;
