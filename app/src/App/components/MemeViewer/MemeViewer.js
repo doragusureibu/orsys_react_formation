@@ -5,7 +5,7 @@ import styles from './MemeViewer.module.scss';
 const MemeViewer = (props) => (
   <svg className={styles.MemeViewer} data-testid="MemeViewer" viewBox={`0 0 ${props.img?props.img.w:1000} ${props.img?props.img.h:1000}`}>
 
-    {props.img && <image href={props.img.url}/>}
+    {props.img && <image href={'/'+ props.img.url}/>}
 
     <text x={props.meme.x} y={props.meme.y} fill={props.meme.color} 
     fontWeight={props.meme.fontWeight}

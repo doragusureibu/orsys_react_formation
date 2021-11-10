@@ -1,0 +1,18 @@
+.Navbar {
+    height: 40px;
+    background-color: #111;
+}
+ul{
+    list-style: none;
+    display: flex;
+    
+}
+li {
+    color:#fff;
+    border-right: 1px solid #fff;
+}
+li *{
+    color:#fff;
+    font-weight: 900;
+    font-size: 30px;
+}

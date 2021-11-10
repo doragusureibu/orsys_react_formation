@@ -3,7 +3,7 @@ import { ADR_REST, RESOURCES } from '../config/config';
 
 const initialCurrentMeme = {
     titre:"",
-    text:"",
+    text:"test",
     x:50,
     y:50,
 color:"#ff0000",
@@ -85,6 +85,7 @@ store.dispatch({type:'INIT'});
 store.subscribe(() => {
     console.log(store.getState());
 });
+
 
 
 export default store;

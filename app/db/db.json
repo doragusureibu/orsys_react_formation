@@ -28,7 +28,22 @@
       "fontSize": 24,
       "fx": 100,
       "fy": 100,
-      "imageId": 0
+      "imageId": 1
+    },
+    {
+      "id": 2,
+      "titre": "titre 1",
+      "text": "SURPRISED JSONDB TWO",
+      "x": 50,
+      "y": 50,
+      "color": "#00f",
+      "underline": true,
+      "italic": true,
+      "fontWeight": 900,
+      "fontSize": 24,
+      "fx": 100,
+      "fy": 100,
+      "imageId": 2
     }
   ],
   "images": [
