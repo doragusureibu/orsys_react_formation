@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import style from './MemeForm.module.scss';
 import Button from '../Button/Button';
+import {connect} from 'react-redux';
+import { stat } from 'fs';
+import { ACTIONS_CURRENT } from '../../store/store';
 
 export const initialState = {};
 
@@ -46,7 +49,7 @@ const MemeForm = (props) => {
                 <div className={style.col2}>
                     <div>
                         <label htmlFor="color">Color :</label><br/>
-                        <input className={style.smallInput} type="text" name="color" text={props.currentMeme.color} 
+                        <input type="color" className={style.smallInput} name="color" text={props.currentMeme.color} 
                             value={props.currentMeme.color}  
                             onChange={(evt) => {props.onCurrentChange({...props.currentMeme, color:evt.target.value})}}
                         />
@@ -54,7 +57,7 @@ const MemeForm = (props) => {
                 </div>
                 <div className={style.col2}>
                     <div>
-                        <label htmlFor="color">font Weight :</label><br/>
+                        <label htmlFor="fontWeight">font Weight :</label><br/>
                         <input className={style.smallInput} type="number" name="weight" text={props.currentMeme.fontWeight} 
                             value={props.currentMeme.fontWeight}  
                             onChange={(evt) => {props.onCurrentChange({...props.currentMeme, fontWeight:evt.target.value})}}
@@ -109,5 +112,14 @@ MemeForm.defaultProps = {
 
 };
 
-export default MemeForm
+function mapStateToProps(state, ownProps) {
+    return {...ownProps, currentMeme:state.current, images:state.ressources.images};
+}
+
+function dispatchToProps(dispatch){
+    return {onCurrentChange:(updateMeme) => dispatch({type:ACTIONS_CURRENT.UPDATE_CURRENT, value:updateMeme}) };
+}
+
+
+export default connect(mapStateToProps, dispatchToProps)(MemeForm)
 

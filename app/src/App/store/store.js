@@ -1,12 +1,12 @@
 import {createStore, combineReducers} from 'redux';
-import { ADR_REST } from '../config/config';
+import { ADR_REST, RESOURCES } from '../config/config';
 
 const initialCurrentMeme = {
     titre:"",
     text:"",
     x:50,
     y:50,
-color:"#f00",
+color:"#ff0000",
 fontWeight:900,
 fontSize:48,
 fx:100,
@@ -24,7 +24,7 @@ const currentReducer = (state = initialCurrentMeme, action) => {
     switch (action.type) {
   
       case ACTIONS_CURRENT.UPDATE_CURRENT:
-          return { ...state, images:[...action.values] };
+          return { ...state, ...action.value};
       case ACTIONS_CURRENT.CLEAR_CURRENT:
           return { ...initialCurrentMeme };    
       default:
@@ -52,10 +52,10 @@ const ressourcesReducer = (state = initialState, action) => {
 
   switch (action.type) {
     case 'INIT':
-        const f1=fetch(`${ADR_REST}${ACTIONS_RESSOURCES.memes}`).then((f)=>f.json());
-        const f2=fetch(`${ADR_REST}${ACTIONS_RESSOURCES.images}`).then((f)=>f.json());
+        const f1=fetch(`${ADR_REST}${RESOURCES.memes}`).then((f)=>f.json());
+        const f2=fetch(`${ADR_REST}${RESOURCES.images}`).then((f)=>f.json());
         Promise.all([f1,f2]).then((arrResp)=>{
-            store.dispatch({type:'FILL_ALL', vaules:[arrResp[1], arrResp[0]]});
+            store.dispatch({type:'FILL_ALL', values:[arrResp[1], arrResp[0]]});
         })
         return state;
 
@@ -75,14 +75,16 @@ const ressourcesReducer = (state = initialState, action) => {
   }
 }
 
+
+
 const store = createStore(combineReducers({ressources:ressourcesReducer, current:currentReducer}));
+
+store.dispatch({type:'INIT'});
+
 
 store.subscribe(() => {
     console.log(store.getState());
 });
 
-store.dispatch({type:ACTIONS_RESSOURCES.ADD_IMAGES, values:[{id:0}, {id:1}]});
-store.dispatch({type:ACTIONS_RESSOURCES.FILL_MEMES, values:[{id:89}, {id:21}]});
-store.dispatch({type:ACTIONS_RESSOURCES.ADD_MEME, value:{id:89}});
 
 export default store;

@@ -8,6 +8,7 @@ import { ADR_REST, RESOURCES } from './config/config';
 import { connect } from 'react-redux';
 
 const initialCurrentMeme = {}; 
+
 const App=(props) => {
 
   // componentDidMount() {
@@ -27,10 +28,8 @@ const App=(props) => {
     return (
       <div className="App">
         <FlexLayout>
-          <MemeViewer meme={props.currentMeme} img={props.images.find((i) => props.current.image.id === i.id)} />
-          {/* <MemeForm currentMeme={props.currentMeme} images={props.images} onCurrentChange={(updatedMeme) => {
-           setState({currentMeme: updatedMeme});}}></MemeForm>           */}
-           <></>
+          <MemeViewer meme={props.current} img={props.images.find((i) => props.current.imageId === i.id)} />
+          <MemeForm />
         </FlexLayout>
         
       </div>
@@ -38,12 +37,10 @@ const App=(props) => {
    }
 
 function mapStateToProps(state, ownProps){
-  return {...ownProps, images:state.images, memes:state.memes, current:state.current};
+  return {...ownProps, images:state.ressources.images, memes:state.ressources.memes, current:state.current};
 }
 function mapDispatchToProps(dispatch){
-  return {
-    addmeme:(meme)=>dispatch({type:ACTIONS_RESSOURCES.ADD_MEME, value:meme})
-  }
+  return {}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
